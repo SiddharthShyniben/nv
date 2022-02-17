@@ -12,9 +12,4 @@ if moreCommits > 0 then
 	end
 end
 --]]
-
-local vimp = require 'vimp'
-
-vimp.map_command('NvUpdate', function()
-	vim.fn.system("cd ~/.config/nvim && git pull origin main")
-end)
+vim.cmd[[command NvUpdate system('cd ~/.config/nvim && git pull origin main]]
