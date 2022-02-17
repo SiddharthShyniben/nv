@@ -1,15 +1,16 @@
 local shouldUpdate = false;
 
 -- git fetch
-vim.cmd[[!cd ~/.config.nvim && git fetch origin main]]
+vim.cmd[[silent !cd ~/.config/nvim && git fetch origin main]]
 
 -- rev-parse
-local moreCommits = tonumber(vim.api.nvim_exec('echo system("cd ~/.config/nvim && git rev-list HEAD...origin/main --count")', true))
+local moreCommits = tonumber(vim.fn.system("cd ~/.config/nvim && git rev-list HEAD...origin/main --count"))
 
 if moreCommits > 0 then
-	local choice = vim.api.nvim_exec('confirm("New Nv update detected. Install it?", "&Yes\n&no")', true)
+	local choice = vim.fn.confirm("New Nv update detected. Install it?", "&Yes\n&no")
+	print(choice)
 
-	if choice == 1 then
-		vim.api.nvim_exec('system("cd ~/.config/nvim && git merge origin/main")', false)
+	if choice == 0 then
+		-- vim.fn.system("cd ~/.config/nvim && git merge origin/main")
 	end
 end
