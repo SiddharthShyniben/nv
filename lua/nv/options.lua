@@ -106,6 +106,6 @@ return function(options)
 	set 'wildignorecase'
 
 	for _, option in ipairs(options) do
-		set option
+		set(option)
 	end
 end
