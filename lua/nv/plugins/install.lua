@@ -26,7 +26,6 @@ require('packer').startup({
 			},
 			config = function() require('nvim-tree').setup {} end
 		}
-
 		use {
 			'nvim-lualine/lualine.nvim',
 			requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -38,6 +37,7 @@ require('packer').startup({
 				})
 			end
 		}
+		use 'glepnir/lspsaga.nvim'
 	end,
 	config = {
 		display = {
