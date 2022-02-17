@@ -4,8 +4,6 @@ local moreCommits = tonumber(vim.fn.system("cd ~/.config/nvim && git rev-list HE
 
 if moreCommits > 0 then
 	local choice = vim.fn.confirm("New Nv update detected. Install it?", "&Yes\n&no")
-	print(choice)
-
 	if choice == 1 then
 		vim.fn.system("cd ~/.config/nvim && git merge origin/main")
 	end
