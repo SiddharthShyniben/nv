@@ -3,7 +3,7 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup({
 	function (use)
 		-- packer :heart: packer
-		use 'wbthomason/packer.nvim'
+		use {'wbthomason/packer.nvim', event = 'VimEnter'}
 
 		-- fast
 		use 'lewis6991/impatient.nvim'
@@ -15,7 +15,8 @@ require('packer').startup({
 				vim.g.tokyonight_style = 'night'
 				vim.g.tokyonight_italic_functions = true
 				vim.cmd [[colorscheme tokyonight]]
-			end
+			end,
+			event = 'VimEnter'
 		}
 
 		-- mappings
@@ -57,10 +58,15 @@ require('packer').startup({
 
 	end,
 	config = {
+		profile = {
+			enable = true,
+			threshold = 5
+		},
 		display = {
 			open_fn = function()
 				return require('packer.util').float({
-					style = 'minimal'
+					style = 'minimal',
+					border = 'none'
 				})
 			end
 		}

@@ -1,3 +1,5 @@
+local wk = require 'which-key'
+
 return function(options)
 	options = options or {}
 	local vimp = require 'vimp'
@@ -24,6 +26,7 @@ return function(options)
 		vimp.inoremap('<Left>', '<esc>:vertical resize +2<CR>i')
 		vimp.inoremap('<Right>', '<esc>:vertical resize -2<CR>i')
 	end
+
 	vimp.nnoremap('<Up>', ':resize +2<CR>')
 	vimp.nnoremap('<Down>', ':resize -2<CR>')
 	vimp.nnoremap('<Left>', ':vertical resize +2<CR>')
