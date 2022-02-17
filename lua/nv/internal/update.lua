@@ -12,4 +12,4 @@ if moreCommits > 0 then
 	end
 end
 --]]
-vim.cmd[[command NvUpdate system('cd ~/.config/nvim && git pull origin main]]
+vim.cmd[[command NvUpdate call system('cd ~/.config/nvim && git pull origin main')]]
