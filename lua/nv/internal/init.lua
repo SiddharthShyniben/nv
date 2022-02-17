@@ -1,0 +1,1 @@
+require('nv.internal.update')
