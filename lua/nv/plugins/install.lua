@@ -28,7 +28,6 @@ require('packer').startup({
 			cmd = 'NvimTree',
 			config = function() require('nvim-tree').setup {} end
 		}
-
 		use {
 			'nvim-lualine/lualine.nvim',
 			requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -48,13 +47,15 @@ require('packer').startup({
 					plugins = {
 						spelling = {enabled = true}
 					},
-					-- TODO: operators for comment
+					operators = {
+						gD = 'Go to Declaration',
+						gd = 'Go to Definition'
+					}
 				}
 			end,
 			event = 'VimEnter'
 		}
 		use {'lewis6991/gitsigns.nvim', event = 'VimEnter'}
-		-- Lua
 		use {
 			'folke/zen-mode.nvim',
 			on = 'ZenMode',
@@ -80,6 +81,15 @@ require('packer').startup({
 			end,
 			on = {'Twillight', 'TwilightEnable'}
 		}
+		use 'tpope/vim-fugitive'
+
+		-- editing
+		use 'tpope/vim-surround' -- once you start using this, you cant live without it
+		use 'windwp/nvim-autopairs'
+
+		-- smortness
+		use 'neovim/nvim-lspconfig'
+		use 'williamboman/nvim-lsp-installer'
 	end,
 	config = {
 		profile = {
