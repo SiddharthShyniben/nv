@@ -17,11 +17,6 @@ return function(options)
 	vimp.nnoremap('<C-l>', '<C-w>l')
 	vimp.nnoremap('<C-k>', '<C-w>k')
 
-	vimp.tnoremap('<C-j>', '<C-w>j')
-	vimp.tnoremap('<C-h>', '<C-w>h')
-	vimp.tnoremap('<C-l>', '<C-w>l')
-	vimp.tnoremap('<C-k>', '<C-w>k')
-
 	if options.eliteMode then
 		-- ELITE! no ARROOOOOOOOWWWWS!
 		vimp.nnoremap('<Up>', ':resize -2<CR>')
