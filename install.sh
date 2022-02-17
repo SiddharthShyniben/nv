@@ -20,5 +20,5 @@ eval 'git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/sha
 echo 'Done.'
 
 echo 'Installing plugins.'
-nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+eval "nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 echo 'Done.'
