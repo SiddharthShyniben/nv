@@ -1,12 +1,12 @@
-function merge(a, b)
+local function merge(a, b)
 	for k, v in pairs(b) do a[k] = v end
 	return a
 end
 
 return function(options)
-	options = options or {}
+	options = options.mappings
 
-	function makeMap(mode, overOpt)
+	local function makeMap(mode, overOpt)
 		overOpt = overOpt or {}
 		return function(lhs, rhs, opt)
 			opt = opt or {}
@@ -20,7 +20,7 @@ return function(options)
 	local vnoremap = makeMap('v', {noremap = true})
 	local nnoremap = makeMap('n', {noremap = true})
 
-	vim.g.mapleader = options.leader or ' '
+	vim.g.mapleader = options.leader
 
 	inoremap('jk', '<ESC>')
 	tnoremap('jk', '<C-\\><C-n>')
@@ -49,6 +49,10 @@ return function(options)
 	nnoremap('<Right>', ':vertical resize -2<CR>')
 
 	nnoremap('<TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"', {expr = true})
+
+	for _, mapping in ipairs(options.customMaps) do
+		vim.api.nvim_set_keymap(mapping.mode, mapping.lhs, mapping.rhs, mapping.opts)
+	end
 
 	local wk = require 'which-key'
 

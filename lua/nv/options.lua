@@ -9,8 +9,7 @@ local function set(x)
 end
 
 return function(options)
-	options = options or {}
-
+	options = options.options
 	-- movement
 	set 'whichwrap=b,s,<,>'
 	set 'startofline'

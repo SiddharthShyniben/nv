@@ -1,46 +1,31 @@
-
-vim.diagnostic.config({
-		virtual_text = {
-			format = function (diagnostic)
-				local symbols = {
-					'', '', '', ''
-				}
-
-				return string.format('%s %s (%s)', symbols[diagnostic.severity], diagnostic.message, diagnostic.source)
-			end
-		}
-})
-
-vim.cmd [[
-	sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
-	sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
-	sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
-	sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
-]]
-
-local function on_attach(_, bufnr)
-	local opts = {noremap = true, silent = true}
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-end
-
 return function(options)
+	vim.cmd('sign define DiagnosticSignError text=' .. options.signs[1] .. ' texthl=DiagnosticSignError linehl=DiagnosticSignError numhl=DiagnosticSignError')
+	vim.cmd('sign define DiagnosticSignWarn text=' .. options.signs[2] .. ' texthl=DiagnosticSignWarn linehl=DiagnosticSignWarn numhl=DiagnosticSignWarn')
+	vim.cmd('sign define DiagnosticSignInfo text=' .. options.signs[3] .. ' texthl=DiagnosticSignInfo linehl=DiagnosticSignInfo numhl=DiagnosticSignInfo')
+	vim.cmd('sign define DiagnosticSignHint text=' .. options.signs[4] .. ' texthl=DiagnosticSignHint linehl=DiagnosticSignHint numhl=DiagnosticSignHint')
+
+	local function on_attach(_, bufnr)
+		local opts = {noremap = true, silent = true}
+		-- Enable completion triggered by <c-x><c-o>
+		vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+		-- Mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.declaration, '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.definition, '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.hover, '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.signatureHelp, '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.addWorkspaceFolder, '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.removeWorkspaceFolder, '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.listWorkspaceFolders, '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.typeDefinition, '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.rename, '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.codeAction, '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.references, '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', options.mappings.formatting, '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+	end
+
 	local lsp_installer = require 'nvim-lsp-installer'
 
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -60,22 +45,15 @@ return function(options)
 		},
 	}
 
-	lsp_installer.settings {
-		ui = {
-			icons = {
-				server_installed = '✓',
-				server_pending = '➜',
-				server_uninstalled = '✗'
-			}
-		}
-	}
+	lsp_installer.settings(options.installerConfig)
+	vim.diagnostic.config(options.diagnosticConfig)
 
 	lsp_installer.on_server_ready(function(server)
 		local mapOpts = {noremap = true, silent = true}
-		vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', mapOpts)
-		vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', mapOpts)
-		vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', mapOpts)
-		vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', mapOpts)
+		vim.api.nvim_set_keymap('n', options.mappings.openFloat, '<cmd>lua vim.diagnostic.open_float()<CR>', mapOpts)
+		vim.api.nvim_set_keymap('n', options.mappings.gotoPrev, '<cmd>lua vim.diagnostic.goto_prev()<CR>', mapOpts)
+		vim.api.nvim_set_keymap('n', options.mappings.gotoNext, '<cmd>lua vim.diagnostic.goto_next()<CR>', mapOpts)
+		vim.api.nvim_set_keymap('n', options.mappings.setLocList, '<cmd>lua vim.diagnostic.setloclist()<CR>', mapOpts)
 
 		local opts = {
 			on_attach = on_attach,
