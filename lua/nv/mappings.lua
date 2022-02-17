@@ -1,6 +1,5 @@
 return function(options)
 	options = options or {}
-	print(vim.inspect(options))
 	local vimp = require 'vimp'
 
 	vim.g.mapleader = options.leader or ' '
