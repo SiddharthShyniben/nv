@@ -23,18 +23,17 @@ return function(options)
 		vimp.inoremap('<Down>', '<esc>:resize -2<CR>i')
 		vimp.inoremap('<Left>', '<esc>:vertical resize +2<CR>i')
 		vimp.inoremap('<Right>', '<esc>:vertical resize -2<CR>i')
-
-		vimp.nnoremap('<Up>', ':resize +2<CR>')
-		vimp.nnoremap('<Down>', ':resize -2<CR>')
-		vimp.nnoremap('<Left>', ':vertical resize +2<CR>')
-		vimp.nnoremap('<Right>', ':vertical resize -2<CR>')
 	end
+	vimp.nnoremap('<Up>', ':resize +2<CR>')
+	vimp.nnoremap('<Down>', ':resize -2<CR>')
+	vimp.nnoremap('<Left>', ':vertical resize +2<CR>')
+	vimp.nnoremap('<Right>', ':vertical resize -2<CR>')
 
 	vimp.nnoremap({expr = true}, '<TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"')
 
 	-- fast config
 	vimp.nnoremap('<leader>c', function()
-		if vim.fn.line('$') == 1 and getline(1) == '' then
+		if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
 			vim.cmd[[edit ~/.config/nvim/lua/nv/config.lua]]
 		else
 			vim.cmd[[tabnew ~/.config/nvim/lua/nv/config.lua]]
