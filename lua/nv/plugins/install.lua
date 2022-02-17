@@ -19,9 +19,6 @@ require('packer').startup({
 			event = 'VimEnter'
 		}
 
-		-- mappings
-		use 'svermeulen/vimpeccable'
-
 		-- ui
 		use {
 			'kyazdani42/nvim-tree.lua',
@@ -55,7 +52,7 @@ require('packer').startup({
 				}
 			end
 		}
-
+		use {'lewis6991/gitsigns.nvim', event = 'VimEnter'}
 	end,
 	config = {
 		profile = {
