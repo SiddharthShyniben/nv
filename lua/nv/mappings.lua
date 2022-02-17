@@ -33,7 +33,7 @@ return function(options)
 	vimp.nnoremap({expr = true}, '<TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"')
 
 	-- fast config
-	vimp.nnoremap({'expr'}, '<leader>c', function()
+	vimp.nnoremap('<leader>c', function()
 		if vim.fn.line('$') == 1 and getline(1) == '' then
 			vim.cmd[[edit ~/.nv]]
 		else

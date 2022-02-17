@@ -37,7 +37,18 @@ require('packer').startup({
 				})
 			end
 		}
-		use 'glepnir/lspsaga.nvim'
+		use {
+			'folke/which-key.nvim',
+			config = function()
+				require('which-key').setup {
+					plugins = {
+						spelling = {enabled = true}
+					},
+					-- TODO: operators for comment
+				}
+			end
+		}
+
 	end,
 	config = {
 		display = {
