@@ -66,8 +66,8 @@ require('packer').startup({
 			'folke/twilight.nvim',
 			config = function()
 				require('twilight').setup {},
-				on = {'Twillight', 'TwilightEnable'}
-			end
+			end,
+			on = {'Twillight', 'TwilightEnable'}
 		}
 	end,
 	config = {
