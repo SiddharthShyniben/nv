@@ -1,4 +1,5 @@
-vim.cmd[[silent !cd ~/.config/nvim && git fetch origin main]]
+--[[ -- too slow
+vim.cmd('silent !cd ~/.config/nvim && git fetch origin main')
 
 local moreCommits = tonumber(vim.fn.system("cd ~/.config/nvim && git rev-list HEAD...origin/main --count"))
 
@@ -10,3 +11,10 @@ if moreCommits > 0 then
 		print('Done.')
 	end
 end
+--]]
+
+local vimp = require 'vimp'
+
+vimp.map_command('NvUpdate', function()
+	vim.fn.system("cd ~/.config/nvim && git pull origin main")
+end)
