@@ -97,8 +97,6 @@ return function(options)
 
 	-- read/write
 	set 'nomodeline'
-	set 'writebackup'
-	set 'backup'
 	set 'autowriteall'
 	set 'autoread'
 
