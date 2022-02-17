@@ -14,7 +14,7 @@ return function(options)
 
 	vimp.nnoremap('<C-j>', '<C-w>j')
 	vimp.nnoremap('<C-h>', '<C-w>h')
-	vimp.nnoremap('<C-l>', '<C-w>l')
+	vimp.nnoremap({'override'}, '<C-l>', '<C-w>l')
 	vimp.nnoremap('<C-k>', '<C-w>k')
 
 	if options.eliteMode then
