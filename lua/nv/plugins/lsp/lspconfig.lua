@@ -1,3 +1,23 @@
+
+vim.diagnostic.config({
+		virtual_text = {
+			format = function (diagnostic)
+				local symbols = {
+					'', '', '', ''
+				}
+
+				return string.format('%s %s (%s)', symbols[diagnostic.severity], diagnostic.message, diagnostic.source)
+			end
+		}
+})
+
+vim.cmd [[
+	sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
+	sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
+	sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
+	sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
+]]
+
 local function on_attach(_, bufnr)
 	local opts = {noremap = true, silent = true}
 	-- Enable completion triggered by <c-x><c-o>
@@ -65,22 +85,3 @@ return function(options)
 		server:setup(opts)
 	end)
 end
-
-vim.diagnostic.config({
-		virtual_text = {
-			format = function (diagnostic)
-				local symbols = {
-					'', '', '', ''
-				}
-
-				return string.format('%s %s (%s)', symbols[diagnostic.severity], diagnostic.message, diagnostic.source)
-			end
-		}
-})
-
-vim.cmd [[
-	sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
-	sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
-	sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
-	sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
-]]
