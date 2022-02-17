@@ -1,2 +1,2 @@
-require('nv.plugins')()
+require('nv.plugins')
 require('nv.options')()
