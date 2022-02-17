@@ -1,9 +1,5 @@
-local shouldUpdate = false;
-
--- git fetch
 vim.cmd[[silent !cd ~/.config/nvim && git fetch origin main]]
 
--- rev-parse
 local moreCommits = tonumber(vim.fn.system("cd ~/.config/nvim && git rev-list HEAD...origin/main --count"))
 
 if moreCommits > 0 then
