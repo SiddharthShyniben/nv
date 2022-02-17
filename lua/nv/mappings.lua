@@ -1,5 +1,6 @@
 return function(options)
 	options = options or {}
+	print(vim.inspect(options))
 	local vimp = require 'vimp'
 
 	vim.g.mapleader = options.leader or ' '
@@ -19,15 +20,15 @@ return function(options)
 
 	if options.elite then
 		-- ELITE! no ARROOOOOOOOWWWWS!
-		vimp.inoremap('<Up>', ':resize -2<CR>')
-		vimp.inoremap('<Down>', ':resize +2<CR>')
-		vimp.inoremap('<Left>', ':vertical resize -2<CR>')
-		vimp.inoremap('<Right>', ':vertical resize +2<CR>')
+		vimp.inoremap('<Up>', ':resize +2<CR>')
+		vimp.inoremap('<Down>', ':resize -2<CR>')
+		vimp.inoremap('<Left>', ':vertical resize +2<CR>')
+		vimp.inoremap('<Right>', ':vertical resize -2<CR>')
 
-		vimp.nnoremap('<Up>', ':resize -2<CR>')
-		vimp.nnoremap('<Down>', ':resize +2<CR>')
-		vimp.nnoremap('<Left>', ':vertical resize -2<CR>')
-		vimp.nnoremap('<Right>', ':vertical resize +2<CR>')
+		vimp.nnoremap('<Up>', ':resize +2<CR>')
+		vimp.nnoremap('<Down>', ':resize -2<CR>')
+		vimp.nnoremap('<Left>', ':vertical resize +2<CR>')
+		vimp.nnoremap('<Right>', ':vertical resize -2<CR>')
 	end
 
 	vimp.nnoremap({expr = true}, '<TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"')
@@ -35,9 +36,9 @@ return function(options)
 	-- fast config
 	vimp.nnoremap('<leader>c', function()
 		if vim.fn.line('$') == 1 and getline(1) == '' then
-			vim.cmd[[edit ~/.nv]]
+			vim.cmd[[edit ~/.config/nvim/lua/nv/config.lua]]
 		else
-			vim.cmd[[tabnew ~/.nv]]
+			vim.cmd[[tabnew ~/.config/nvim/lua/nv/config.lua]]
 		end
 	end)
 end
