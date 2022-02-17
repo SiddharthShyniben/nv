@@ -19,5 +19,5 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 echo 'Done.'
 
 echo 'Installing plugins.'
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 echo 'Done.'
