@@ -1,3 +1,5 @@
+require('impatient')
+
 local options = {}
 
 local _, opts = pcall(require, 'nv.config')

@@ -5,6 +5,9 @@ require('packer').startup({
 		-- packer :heart: packer
 		use 'wbthomason/packer.nvim'
 
+		-- fast
+		use 'lewis6991/impatient.nvim'
+
 		-- theme
 		use {
 			'folke/tokyonight.nvim',
