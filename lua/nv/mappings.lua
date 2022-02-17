@@ -17,8 +17,13 @@ return function(options)
 	vimp.nnoremap({'override'}, '<C-l>', '<C-w>l')
 	vimp.nnoremap('<C-k>', '<C-w>k')
 
-	if options.eliteMode then
+	if options.elite then
 		-- ELITE! no ARROOOOOOOOWWWWS!
+		vimp.inoremap('<Up>', ':resize -2<CR>')
+		vimp.inoremap('<Down>', ':resize +2<CR>')
+		vimp.inoremap('<Left>', ':vertical resize -2<CR>')
+		vimp.inoremap('<Right>', ':vertical resize +2<CR>')
+
 		vimp.nnoremap('<Up>', ':resize -2<CR>')
 		vimp.nnoremap('<Down>', ':resize +2<CR>')
 		vimp.nnoremap('<Left>', ':vertical resize -2<CR>')
