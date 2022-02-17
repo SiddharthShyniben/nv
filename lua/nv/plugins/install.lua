@@ -92,10 +92,6 @@ require('packer').startup({
 		use 'williamboman/nvim-lsp-installer'
 	end,
 	config = {
-		profile = {
-			enable = true,
-			threshold = 5
-		},
 		display = {
 			open_fn = function()
 				return require('packer.util').float({
