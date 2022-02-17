@@ -59,7 +59,18 @@ require('packer').startup({
 			'folke/zen-mode.nvim',
 			on = 'ZenMode',
 			config = function()
-				require('zen-mode').setup {}
+				require('zen-mode').setup {
+					window = {
+						options = {
+							signcolumn = 'no',
+							number = false,
+							relativenumber = false,
+							cursorline = false,
+							list = false,
+							foldcolumn = 0
+						}
+					}
+				}
 			end
 		}
 		use {
