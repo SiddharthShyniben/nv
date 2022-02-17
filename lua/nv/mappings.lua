@@ -1,8 +1,13 @@
+function merge(a, b)
+	for k, v in pairs(b) do a[k] = v end
+	return a
+end
+
 return function(options)
 	options = options or {}
 
 	function makeMap(mode, overOpt)
-		overOpts = overOpt or {}
+		overOpt = overOpt or {}
 		return function(lhs, rhs, opt)
 			opt = opt or {}
 			opt = merge(overOpt, opt)

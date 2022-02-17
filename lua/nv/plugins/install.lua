@@ -50,9 +50,25 @@ require('packer').startup({
 					},
 					-- TODO: operators for comment
 				}
-			end
+			end,
+			event = 'VimEnter'
 		}
 		use {'lewis6991/gitsigns.nvim', event = 'VimEnter'}
+		-- Lua
+		use {
+			'folke/zen-mode.nvim',
+			on = 'ZenMode'
+			config = function()
+				require('zen-mode').setup {}
+			end
+		}
+		use {
+			'folke/twilight.nvim',
+			config = function()
+				require('twilight').setup {},
+				on = {'Twillight', 'TwilightEnable'}
+			end
+		}
 	end,
 	config = {
 		profile = {
