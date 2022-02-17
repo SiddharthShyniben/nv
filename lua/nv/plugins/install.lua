@@ -57,7 +57,7 @@ require('packer').startup({
 		-- Lua
 		use {
 			'folke/zen-mode.nvim',
-			on = 'ZenMode'
+			on = 'ZenMode',
 			config = function()
 				require('zen-mode').setup {}
 			end
