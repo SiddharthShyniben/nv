@@ -1,4 +1,7 @@
-local options = require('nv.config') or {}
+local options = {}
+
+local _, opts = pcall(require, 'nv.config')
+if opts then options = opts end
 
 require('nv.plugins')
 require('nv.options')(options.options)
