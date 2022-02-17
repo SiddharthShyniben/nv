@@ -51,7 +51,10 @@ return function(options)
 	}
 
 	lsp_installer.on_server_ready(function(server)
-		local opts = {}
+		local opts = {
+			on_attach = on_attach,
+			capabilities = capabilities
+		}
 
 		server:setup(opts)
 	end)
