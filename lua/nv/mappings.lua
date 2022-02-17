@@ -30,5 +30,5 @@ return function(options)
 		vimp.nnoremap('<Right>', ':vertical resize +2<CR>')
 	end
 
-	vimp.nnoremap({expr = true}, '<TAB>', 'pumvisible() ? "\<C-n>" : "\<TAB>"')
+	vimp.nnoremap({expr = true}, '<TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"')
 end
