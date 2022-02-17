@@ -51,6 +51,12 @@ return function(options)
 	}
 
 	lsp_installer.on_server_ready(function(server)
+		local mapOpts = {noremap = true, silent = true}
+		vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', mapOpts)
+		vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', mapOpts)
+		vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', mapOpts)
+		vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', mapOpts)
+
 		local opts = {
 			on_attach = on_attach,
 			capabilities = capabilities
@@ -59,3 +65,22 @@ return function(options)
 		server:setup(opts)
 	end)
 end
+
+vim.diagnostic.config({
+		virtual_text = {
+			format = function (diagnostic)
+				local symbols = {
+					'', '', '', ''
+				}
+
+				return string.format('%s %s (%s)', symbols[diagnostic.severity], diagnostic.message, diagnostic.source)
+			end
+		}
+})
+
+vim.cmd [[
+	sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
+	sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
+	sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
+	sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
+]]
