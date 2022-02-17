@@ -13,4 +13,7 @@ require('packer').startup(function (use)
 			vim.cmd [[colorscheme tokyonight]]
 		end
 	}
+
+	-- mappings
+	use 'svermeulen/vimpeccable'
 end)
