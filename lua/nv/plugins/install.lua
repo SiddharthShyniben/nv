@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(
+require('packer').startup({
 	function (use)
 		-- packer :heart: packer
 		use 'wbthomason/packer.nvim'
@@ -60,4 +60,4 @@ require('packer').startup(
 			end
 		}
 	}
-)
+})
