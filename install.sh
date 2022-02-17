@@ -7,18 +7,7 @@ then
 	INSTALL_DIR=$1
 fi
 
-echo "Cloning to $INSTALL_DIR..."
 mkdir -p "$INSTALL_DIR"
 git clone https://github.com/SiddharthShyniben/nv "$INSTALL_DIR"
-echo 'Done.'
-echo ''
-
-echo 'Installing packer.nvim...'
-
-eval 'git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
-
-echo 'Done.'
-
-echo 'Installing plugins.'
-eval "nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
-echo 'Done.'
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
