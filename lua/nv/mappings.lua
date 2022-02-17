@@ -19,10 +19,10 @@ return function(options)
 
 	if options.elite then
 		-- ELITE! no ARROOOOOOOOWWWWS!
-		vimp.inoremap('<Up>', ':resize +2<CR>')
-		vimp.inoremap('<Down>', ':resize -2<CR>')
-		vimp.inoremap('<Left>', ':vertical resize +2<CR>')
-		vimp.inoremap('<Right>', ':vertical resize -2<CR>')
+		vimp.inoremap('<Up>', '<esc>:resize +2<CR>i')
+		vimp.inoremap('<Down>', '<esc>:resize -2<CR>i')
+		vimp.inoremap('<Left>', '<esc>:vertical resize +2<CR>i')
+		vimp.inoremap('<Right>', '<esc>:vertical resize -2<CR>i')
 
 		vimp.nnoremap('<Up>', ':resize +2<CR>')
 		vimp.nnoremap('<Down>', ':resize -2<CR>')
