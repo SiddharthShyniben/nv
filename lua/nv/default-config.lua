@@ -46,7 +46,7 @@ local defaultConfig = {
 		diagnosticConfig = {
 			virtual_text = {
 				format = function (diagnostic)
-					local signs = {'', '', '', ''},
+					local signs = {'', '', '', ''}
 					return string.format(
 						'%s %s (%s)',
 						signs[diagnostic.severity],
