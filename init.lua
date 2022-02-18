@@ -1,4 +1,4 @@
-require('impatient')
+pcall(require, 'impatient')
 
 local options = {}
 local defaultOptions = require('nv.default-config')
