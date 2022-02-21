@@ -52,7 +52,7 @@ set 'showtabline=1'
 
 -- terminal
 set 'title'
-set 'titlestring=NvClean:\\ %' -- how isn't there a plugin for this? lolol
+set 'titlestring=NvClean' -- how isn't there a plugin for this? lolol
 set 'titleold=I\\ use\\ NvClean\\ btw'
 
 -- mouse
