@@ -3,7 +3,7 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup({
 	function (use)
 		-- packer :heart: packer
-		use {'wbthomason/packer.nvim', event = 'VimEnter'}
+		use {'wbthomason/packer.nvim'}
 
 		-- fast
 		use {'lewis6991/impatient.nvim'}
@@ -15,7 +15,6 @@ require('packer').startup({
 				vim.g.tokyonight_style = 'night'
 				vim.cmd [[colorscheme tokyonight]]
 			end,
-			event = 'VimEnter',
 		}
 
 		-- ui
@@ -37,7 +36,6 @@ require('packer').startup({
 					}
 				})
 			end,
-			event = 'VimEnter',
 		}
 		use {
 			'folke/which-key.nvim',
@@ -48,7 +46,6 @@ require('packer').startup({
 					}
 				}
 			end,
-			event = 'VimEnter',
 		}
 		use {'lewis6991/gitsigns.nvim',
 			config = function()
@@ -86,39 +83,14 @@ require('packer').startup({
 			end
 		}
 		use {'lukas-reineke/indent-blankline.nvim', config = function()
-			vim.cmd [[highlight IndentBlanklineChar guifg=#414868]]
 			require("indent_blankline").setup {
 				show_current_context = true,
 			}
+			vim.cmd [[highlight IndentBlanklineChar guifg=#414868]]
 		end}
 		use {
 			'nvim-telescope/telescope.nvim',
 			requires = {{'nvim-lua/plenary.nvim'}}
-		}
-		use {
-			'folke/zen-mode.nvim',
-			on = 'ZenMode',
-			config = function()
-				require('zen-mode').setup {
-					window = {
-						options = {
-							signcolumn = 'no',
-							number = false,
-							relativenumber = false,
-							cursorline = false,
-							list = false,
-							foldcolumn = 0
-						}
-					}
-				}
-			end,
-		}
-		use {
-			'folke/twilight.nvim',
-			config = function()
-				require('twilight').setup {}
-			end,
-			on = {'Twilight', 'TwilightEnable'},
 		}
 
 		-- editing
