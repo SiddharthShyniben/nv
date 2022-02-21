@@ -1,5 +1,3 @@
-pcall(require, 'impatient')
-
 require('nv.plugins')
 require('nv.options')
 require('nv.mappings')
