@@ -51,11 +51,7 @@ local wk = require 'which-key'
 wk.register({
 	c = {
 		function()
-			if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
-				vim.cmd[[edit ~/.config/nvim/lua/nv/config.lua]]
-			else
-				vim.cmd[[tabnew ~/.config/nvim/lua/nv/config.lua]]
-			end
+
 		end,
 		'Edit Nv configuration'
 	}
