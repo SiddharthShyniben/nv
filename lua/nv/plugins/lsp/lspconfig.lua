@@ -46,8 +46,28 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	},
 }
 
-lsp_installer.settings(options.installerConfig)
-vim.diagnostic.config(options.diagnosticConfig)
+lsp_installer.settings({
+	ui = {
+		icons = {
+			server_installed = '✓',
+			server_pending = '➜',
+			server_uninstalled = '✗'
+		}
+	}
+})
+vim.diagnostic.config({
+	virtual_text = {
+		format = function (diagnostic)
+			local signs = {'', '', '', ''}
+			return string.format(
+				'%s %s (%s)',
+				signs[diagnostic.severity],
+				diagnostic.message,
+				diagnostic.source
+			)
+		end
+	}
+})
 
 lsp_installer.on_server_ready(function(server)
 	local mapOpts = {noremap = true, silent = true}
