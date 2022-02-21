@@ -1,4 +1,5 @@
 local signs = {'', '', '', ''}
+local wk = require 'which-key'
 
 vim.cmd('sign define DiagnosticSignError text=' .. signs[1] .. ' texthl=DiagnosticSignError linehl=DiagnosticSignError numhl=DiagnosticSignError')
 vim.cmd('sign define DiagnosticSignWarn text=' .. signs[2] .. ' texthl=DiagnosticSignWarn linehl=DiagnosticSignWarn numhl=DiagnosticSignWarn')
@@ -25,6 +26,25 @@ local function on_attach(_, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lfm', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+	wk.register({
+		D = 'Declaration',
+		d = 'Definition',
+		k = 'Hover',
+		i = 'Implementation',
+		K = 'Signature',
+		t = 'Type Definition',
+		w = {
+			name = 'Workspace',
+			a = 'Add Folder',
+			r = 'Remove Folder',
+			l = 'List Folders',
+		},
+		rf = 'References',
+		rn = 'Rename',
+		ca = 'Code Actions',
+		fm = 'Formatting',
+	}, {prefix = '<leader>l'})
 end
 
 local lsp_installer = require 'nvim-lsp-installer'
@@ -74,7 +94,14 @@ lsp_installer.on_server_ready(function(server)
 	vim.api.nvim_set_keymap('n', '<leader>lof', '<cmd>lua vim.diagnostic.open_float()<CR>', mapOpts)
 	vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', mapOpts)
 	vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', mapOpts)
-	vim.api.nvim_set_keymap('n', '<leader>lcf', '<cmd>lua vim.diagnostic.setloclist()<CR>', mapOpts)
+	vim.api.nvim_set_keymap('n', '<leader>lll', '<cmd>lua vim.diagnostic.setloclist()<CR>', mapOpts)
+
+	wk.register({
+		o = 'Open Float',
+		ll = 'Set Location List',
+		['[d'] = 'Next Diagnostic',
+		[']d'] = 'Previous Diagnostic',
+	}, {prefix = '<leader>l'})
 
 	local opts = {
 		on_attach = on_attach,
