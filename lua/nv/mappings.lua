@@ -51,7 +51,7 @@ local wk = require 'which-key'
 wk.register({
 	c = {
 		function()
-
+			require('telescope.builtin').find_files({cwd = '~/.config/nvim'})
 		end,
 		'Edit Nv configuration'
 	}
