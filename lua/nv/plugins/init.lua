@@ -1,4 +1,2 @@
-return function(options)
-	require('nv.plugins.install')(options.plugins)
-	require('nv.plugins.lsp')(options)
-end
+require('nv.plugins.install')
+require('nv.plugins.lsp')

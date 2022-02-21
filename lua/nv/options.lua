@@ -8,101 +8,94 @@ local function set(x)
 	end
 end
 
-return function(options)
-	options = options.options
-	-- movement
-	set 'whichwrap=b,s,<,>'
-	set 'startofline'
+-- movement
+set 'whichwrap=b,s,<,>'
+set 'startofline'
 
-	-- search
-	set 'wrapscan'
-	set 'incsearch'
-	set 'magic' -- haha
-	set 'ignorecase'
-	set 'smartcase'
+-- search
+set 'wrapscan'
+set 'incsearch'
+set 'magic' -- haha
+set 'ignorecase'
+set 'smartcase'
 
-	-- display
-	set 'scrolloff=99999'
-	set 'nowrap'
-	set 'cmdheight=3'
-	set 'fillchars=eob:'
-	set 'list'
-	set 'listchars=multispace:,lead:,trail:,precedes:ﲖ,extends:ﲕ,tab:\\ \\ \\ ,eol:¬'
-	set 'number'
-	set 'relativenumber'
-	set 'numberwidth=5'
-	set 'conceallevel=2'
+-- display
+set 'scrolloff=99999'
+set 'nowrap'
+set 'cmdheight=3'
+set 'fillchars=eob:'
+set 'list'
+set 'listchars=multispace:,lead:,trail:,precedes:ﲖ,extends:ﲕ,tab:\\ \\ \\ ,eol:¬'
+set 'number'
+set 'relativenumber'
+set 'numberwidth=5'
+set 'conceallevel=2'
 
-	-- syntax
-	set 'background=dark'
-	set 'hlsearch'
-	set 'termguicolors'
-	set 'cursorline'
+-- syntax
+set 'background=dark'
+set 'hlsearch'
+set 'termguicolors'
+set 'cursorline'
 
-	-- windows
-	set 'laststatus=2'
-	set 'winminheight=0'
-	set 'winheight=10'
-	set 'winminwidth=0'
-	set 'winwidth=10'
-	set 'nohidden' -- :prayge:
-	set 'splitbelow'
-	set 'splitright'
+-- windows
+set 'laststatus=2'
+set 'winminheight=0'
+set 'winheight=10'
+set 'winminwidth=0'
+set 'winwidth=10'
+set 'nohidden' -- :prayge:
+set 'splitbelow'
+set 'splitright'
 
-	-- tabs
-	set 'showtabline=1'
+-- tabs
+set 'showtabline=1'
 
-	-- terminal
-	set 'title'
-	set 'titlestring=NvClean:\\ %' -- how isn't there a plugin for this? lolol
-	set 'titleold=I\\ use\\ NvClean\\ btw'
+-- terminal
+set 'title'
+set 'titlestring=NvClean:\\ %' -- how isn't there a plugin for this? lolol
+set 'titleold=I\\ use\\ NvClean\\ btw'
 
-	-- mouse
-	set 'mouse=a'
+-- mouse
+set 'mouse=a'
 
-	-- messages
-	set 'terse' -- vim newbies remove this
-	set 'showcmd'
-	set 'noshowmode'
-	set 'noconfirm' -- users familliar with other editors might like to change this
-	set 'belloff=all'
+-- messages
+set 'terse' -- vim newbies remove this
+set 'showcmd'
+set 'noshowmode'
+set 'noconfirm' -- users familliar with other editors might like to change this
+set 'belloff=all'
 
-	-- editing
-	set 'undofile'
-	set 'textwidth=80'
-	set 'formatoptions-=ro'
-	set 'formatoptions+=2nj'
-	set 'infercase'
-	set 'showmatch'
+-- editing
+set 'undofile'
+set 'textwidth=80'
+set 'formatoptions-=ro'
+set 'formatoptions+=2nj'
+set 'infercase'
+set 'showmatch'
 
-	-- indent
-	set 'tabstop=4'
-	set 'shiftwidth=4'
-	set 'smarttab'
-	set 'noexpandtab'
-	set 'smartindent'
-	-- TODO cino
-	-- set 'vartabstop=2,4' -- TODO
-	vim.cmd [[autocmd Filetype javascript,typescript set cindent]]
+-- indent
+set 'tabstop=4'
+set 'shiftwidth=4'
+set 'smarttab'
+set 'noexpandtab'
+set 'smartindent'
+-- TODO cino
+-- set 'vartabstop=2,4' -- TODO
+vim.cmd [[autocmd Filetype javascript,typescript set cindent]]
 
-	-- folding
-	set 'foldenable'
-	set 'foldlevelstart=3'
-	set 'foldminlines=2'
-	set 'foldmethod=syntax'
+-- folding
+set 'foldenable'
+set 'foldlevelstart=3'
+set 'foldminlines=2'
+set 'foldmethod=syntax'
 
-	-- maps
-	-- set 'noremap' -- TODO: should i? it would break stuff
+-- maps
+-- set 'noremap' -- TODO: should i? it would break stuff
 
-	-- read/write
-	set 'nomodeline'
-	set 'autowriteall'
-	set 'autoread'
+-- read/write
+set 'nomodeline'
+set 'autowriteall'
+set 'autoread'
 
-	-- cmdline
-	set 'wildignorecase'
-
-	for _, option in ipairs(options) do
-		set(option)
-	end
-end
+-- cmdline
+set 'wildignorecase'
