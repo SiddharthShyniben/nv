@@ -120,7 +120,6 @@ require('packer').startup({
 			end,
 			on = {'Twilight', 'TwilightEnable'},
 		}
-		use {'tpope/vim-fugitive'}
 
 		-- editing
 		use {'tpope/vim-surround'} -- once you start using this, you cant live without it
