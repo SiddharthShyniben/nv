@@ -78,8 +78,8 @@ set 'tabstop=4'
 set 'shiftwidth=4'
 set 'smarttab'
 set 'noexpandtab'
-set 'smartindent'
--- TODO cino
+set 'cindent'
+set 'cino=L0,l1,b1,c0,J1,j1'
 -- set 'vartabstop=2,4' -- TODO
 vim.cmd [[autocmd Filetype javascript,typescript set cindent]]
 

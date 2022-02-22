@@ -20,7 +20,6 @@ require('packer').startup({
 			requires = {
 				'kyazdani42/nvim-web-devicons', -- optional, for file icon
 			},
-			cmd = 'NvimTree',
 			config = function() require('nvim-tree').setup {} end,
 		}
 		use {
@@ -92,7 +91,6 @@ require('packer').startup({
 
 		-- editing
 		use {'tpope/vim-surround'} -- once you start using this, you cant live without it
-		use {'tpope/vim-surround'}
 		use {'tpope/vim-commentary'}
 		use {'tpope/vim-ragtag'}
 		use {'tpope/vim-repeat'}
@@ -110,6 +108,8 @@ require('packer').startup({
 		use {'hrsh7th/cmp-path'}
 		use {'hrsh7th/cmp-cmdline'}
 		use {'hrsh7th/nvim-cmp'}
+		use {'hrsh7th/cmp-nvim-lua'}
+		use {'b0o/SchemaStore.nvim'}
 
 		-- snips
 		use {'L3MON4D3/LuaSnip'}
@@ -123,7 +123,6 @@ require('packer').startup({
 		use {'wakatime/vim-wakatime'}
 		use {'christoomey/vim-tmux-navigator'}
 
-		
 		-- treesitter
 		use {
 			'nvim-treesitter/nvim-treesitter',
@@ -132,6 +131,10 @@ require('packer').startup({
 		use {'nvim-treesitter/nvim-treesitter-textobjects'}
 		use {'nvim-treesitter/nvim-treesitter-refactor'}
 		use {'nvim-treesitter/nvim-treesitter-angular'}
+
+		-- file types
+		use {'pangloss/vim-javascript'}
+		use {'tpope/vim-markdown'}
 	end,
 	config = {
 		display = {
